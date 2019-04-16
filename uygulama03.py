@@ -1,12 +1,12 @@
-print['Adam Asmaca Oyununa Hoşgeldiniz.',\
-      'Bu Oyunda Sorulan Kelimeler Şehir İsimlerinden Oluşmaktadır.',\
-      'Her Bir *_*Sembolü Bir Harfi Temsil Etmektedir.']
+print(">> Adam Asmaca Oyunu Başlıyor, İyi Şanslar."
+      "<<\n>> Oyunda Sorulacak Sözcükler 'Yemek' adlarından Oluşmaktadır."
+      "<<\n>> Her Bir '_' Sembolü Bir Harfi İçermektedir. <<")
 from random import choice
 while True:
-    kelime = choice (["ankara", "tekirdağ", "sivas", "kars", "lüleburgaz", "adana", "bursa", "tokat"])
+    kelime = choice (["imambayıldı", "dolma", "menemen", "sarma", "makarna", "kızartma", "içliköfte", "mantı"])
     kelime = kelime.upper()
     harfsayisi = len(kelime)
-    print("Kelimemiz {} harflidir.\n".format(harfsayisi))
+    print("Kelimemiz {} harfden oluşuyor.\n".format(harfsayisi))
     tahminler = []
     hata = []
     KalanCan = 5
@@ -18,32 +18,33 @@ while True:
             else:
                 bos = bos + " _ "
         if bos == kelime:
-            print("Kelimeyi Doğru Bildiniz. Tebrikler!!")
+            print("Bildiniz. Tebrikler!!")
             break
         print("Kelimeyi Tahmin Ediniz", bos)
         print(KalanCan, "Canınız Kaldı")
         Tahmin = input("Bir Harf Giriniz >>>>")
         Tahmin = Tahmin.upper()
         if Tahmin == kelime:
-            print("\n\nDoğru Bildiniz. Tebrikler\n\n")
+            print("\n\nBildiniz. Tebrikler\n\n")
             break
         if Tahmin in tahminler or Tahmin in hata:
-            print("{} Daha Önce Söylendi. Lütfen Başka Bir Harf Söyleyin. ".format(Tahmin))
+            print("{} Bu Harf Daha Önce Girildi. Lütfen Başka Bir Harf Giriniz. ".format(Tahmin))
         elif Tahmin in kelime:
             rpt = kelime.count(Tahmin)
-            print("Dogru.{0} Harfi Kelimemiz İçerisinde {1} Kere Geçiyor".format(Tahmin, rpt))
+            print("Bildiniz.{0} Harfi Kelime İçerisinde Mevcut {1} Kere Geçiyor".format(Tahmin, rpt))
             tahminler.append(Tahmin)
         else:
-            print("Maalesef Yanlış. Kelimede Böyle Bir Harf Geçmiyor.")
+            print("Harfiniz Doğru Değil. Bu Harf Kelimede Bulunmuyor.")
             hata.append(Tahmin)
             KalanCan = KalanCan - 1
     if KalanCan == 0:
-        print("\n\nHiç Hakkınız Kalmadı. Maalesef Bilemediniz.")
+        print("\n\nHiç Canınız Kalmadı. Tahmin Edemediniz.")
         print("Kelimemiz {}\n\n".format(kelime))
-    print("Oyundan Çıkmak İstiyorsanız\n'H' Tuşuna Basınız\nDevam Etmek İçin Başka Bir Tuşa Basınız. ")
+    print("Oyundan Çıkmak İstiyorsanız\n'Ç' Tuşuna Basın\nDevam Etmek İstiyorsanız Herhangi Bir Tuşa Basın. ")
     devam = input(">>>>")
     devam = devam.upper()
-    if devam == "H":
+    if devam == "Ç":
         break
     else:
         continue
+    input()  # Dikkat, Bu Satır programın kapanmamasını sağlayacak.
